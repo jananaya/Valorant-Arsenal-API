@@ -7,6 +7,4 @@ public interface IWeapon {
     String getCategory();
     ArrayList<String> getSpecs();
     String getImagePath();
-    @Override
-    String toString();
 }
