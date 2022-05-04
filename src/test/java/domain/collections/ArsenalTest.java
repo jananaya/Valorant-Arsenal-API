@@ -12,13 +12,21 @@ import domain.types.Yardstick;
 public class ArsenalTest {
 	@org.junit.jupiter.api.Test
 	void insert() {
-		String weaponName = "Desert Eagle";
 		Arsenal arsenal = new Arsenal();
-		Weapon w1 = new Weapon(weaponName, "Handgun", null, "", 0, 0, 0);
+		Weapon w1 = new Weapon("Desert Eagle", "Handgun", null, "", 0, 0, 0);
+		Weapon w2 = new Weapon("AK47", "Fusil", null, "", 0, 0, 0);
+		Weapon w3 = new Weapon("Knife", "Melee", null, "", 0, 0, 0);
 
-		assertEquals(null, arsenal.searchByName(weaponName));
+		arsenal.insert(w2);
+		arsenal.insert(w3);
+		
+		assertEquals(null, arsenal.searchByName("Desert Eagle"));
+		
 		arsenal.insert(w1);
-		assertEquals(w1, arsenal.searchByName(weaponName));
+		
+		assertEquals(w1, arsenal.searchByName("Desert Eagle"));
+		assertEquals(w2, arsenal.searchByName("AK47"));
+		assertEquals(w3, arsenal.searchByName("Knife"));
 	}
 
 	@org.junit.jupiter.api.Test
@@ -27,7 +35,7 @@ public class ArsenalTest {
 		Weapon ak47 = new Weapon(weaponName, "", null, "", 0, 0, 0);
 		Arsenal arsenal = new Arsenal();
 
-		arsenal.insert(new Weapon(null, null, null, null, 0, 0, 0));
+		arsenal.insert(new Weapon("", null, null, null, 0, 0, 0));
 		arsenal.insert(ak47);
 
 		assertEquals(ak47, arsenal.searchByName(weaponName));
