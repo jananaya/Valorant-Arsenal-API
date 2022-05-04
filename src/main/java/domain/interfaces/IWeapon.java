@@ -7,7 +7,4 @@ public interface IWeapon {
     String getCategory();
     ArrayList<String> getSpecs();
     String getImagePath();
-    float getRateOfFire();
-    float getDamage();
-    float getRating();
 }
