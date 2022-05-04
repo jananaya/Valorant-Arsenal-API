@@ -48,6 +48,29 @@ public class Arsenal implements IArsenal {
 
 	@Override
 	public void insert(IWeapon weapon) {
-		// TODO		
+		if (this.root == null) {
+			this.root = new BinaryTree<IWeapon>(weapon);
+			return;
+		}
+		
+		insert(weapon, this.root);
+	}
+	
+	private void insert(IWeapon weapon, BinaryTree<IWeapon> r) {
+		if (weapon.getDamage() > r.getData().getDamage()) {
+			if (r.right() == null) {
+				r.linkRight(new BinaryTree<IWeapon>(weapon));
+				return;
+			}
+			
+			insert(weapon, r.right());
+		} else {
+			if (r.left() == null) {
+				r.linkLeft(new BinaryTree<IWeapon>(weapon));
+				return;
+			}
+			
+			insert(weapon, r.left());
+		}
 	}
 }
