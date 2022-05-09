@@ -91,6 +91,21 @@ public class ArsenalTest {
 	}
 
 	@org.junit.jupiter.api.Test
+	void getWeapons() {
+		Arsenal arsenal = new Arsenal();
+
+		Weapon w1 = new Weapon("Weapon", "", null, "", 0, 0, 0);
+		Weapon w2 = new Weapon("Another weapon", "", null, "", 0, 0, 0);
+
+		ArrayList<Weapon> weapons = new ArrayList<>(Arrays.asList(w2, w1));
+
+		arsenal.insert(w1);
+		arsenal.insert(w2);
+
+		assertEquals(weapons, arsenal.getWeapons());
+	}
+
+	@org.junit.jupiter.api.Test
 	void empty() {
 		Arsenal arsenal = new Arsenal();
 
