@@ -29,7 +29,7 @@
             <artifactId>BinaryTree</artifactId>
             <version>RELEASE</version>
             <scope>system</scope>
-            <systemPath>${basedir}\src\lib\BinaryTree.jar</systemPath>
+            <systemPath>${basedir}/src/lib/BinaryTree.jar</systemPath>
         </dependency>
     </dependencies>
     
