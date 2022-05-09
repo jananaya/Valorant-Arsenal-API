@@ -48,8 +48,30 @@ public class Arsenal implements IArsenal {
 		}
 	}
 
+	@Override
+	public ArrayList<IWeapon> searchByCategory(String category) {
+		if (empty())
+			return null;
+
+		this.weapons.clear();
+		searchByCategory(category, this.root);
+		return this.weapons;
+	}
+
+	private void searchByCategory(String category, BinaryTree<IWeapon> r) {
+		if (r == null)
+			return;
+
+		if (r.getData().getCategory().equals(category)) {
+			this.weapons.add(r.getData());
+		}
+
+		searchByCategory(category, r.left());
+		searchByCategory(category, r.right());
+	}
+
         public ArrayList<IWeapon> getWeapons() {
-            if (this.root == null)
+            if (empty())
                 return null;
 
             this.weapons.clear();
@@ -58,7 +80,7 @@ public class Arsenal implements IArsenal {
             return this.weapons;
         }
 
-        private void getWeapons(BinaryTree<IWeapon> r) {
+	private void getWeapons(BinaryTree<IWeapon> r) {
             if (r == null)
                 return;
 
@@ -75,7 +97,7 @@ public class Arsenal implements IArsenal {
 
 	@Override
 	public void insert(IWeapon weapon) {
-		if (this.root == null) {
+		if (empty()) {
 			this.root = new BinaryTree<IWeapon>(weapon);
 			return;
 		}
@@ -99,5 +121,10 @@ public class Arsenal implements IArsenal {
 
 			insert(weapon, r.left());
 		}
+	}
+
+	@Override
+	public boolean empty() {
+		return this.root == null;
 	}
 }
