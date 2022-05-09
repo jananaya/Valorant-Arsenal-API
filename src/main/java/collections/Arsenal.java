@@ -35,10 +35,17 @@ public class Arsenal implements IArsenal {
 		if (r.getData().getName().equals(name)) {
 			this.weapon = r.getData();
 			return;
+		} else if (name.compareTo(r.getData().getName()) > 0) {
+			if (r.right() == null) {
+				return;
+			}
+			searchByName(name, r.right());
+		} else {
+			if (r.left() == null) {
+				return;
+			}
+			searchByName(name, r.left());
 		}
-
-		searchByName(name, r.left());
-		searchByName(name, r.right());
 	}
 
         public ArrayList<IWeapon> getWeapons() {
@@ -72,24 +79,24 @@ public class Arsenal implements IArsenal {
 			this.root = new BinaryTree<IWeapon>(weapon);
 			return;
 		}
-		
+
 		insert(weapon, this.root);
 	}
-	
+
 	private void insert(IWeapon weapon, BinaryTree<IWeapon> r) {
-		if (weapon.getDamage() > r.getData().getDamage()) {
+		if (weapon.getName().compareTo(r.getData().getName()) > 0) {
 			if (r.right() == null) {
 				r.linkRight(new BinaryTree<IWeapon>(weapon));
 				return;
 			}
-			
+
 			insert(weapon, r.right());
 		} else {
 			if (r.left() == null) {
 				r.linkLeft(new BinaryTree<IWeapon>(weapon));
 				return;
 			}
-			
+
 			insert(weapon, r.left());
 		}
 	}
