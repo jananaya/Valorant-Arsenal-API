@@ -71,6 +71,7 @@ public class Arsenal implements IArsenal {
         searchByCategory(category, r.right());
     }
 
+    @Override
     public ArrayList<IWeapon> getWeapons() {
         if (empty())
             return null;
