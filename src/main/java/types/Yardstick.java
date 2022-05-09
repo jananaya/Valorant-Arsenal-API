@@ -1,4 +1,4 @@
-package domain.types;
+package types;
 
 public enum Yardstick {
     NAME,

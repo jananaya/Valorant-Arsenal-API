@@ -1,6 +1,7 @@
-package domain.interfaces;
+package collections.interfaces;
 
-import domain.types.Yardstick;
+import domain.interfaces.IWeapon;
+import types.Yardstick;
 import java.util.ArrayList;
 
 public interface IArsenal {

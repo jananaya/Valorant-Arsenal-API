@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import types.BinaryTree;
 
-import domain.interfaces.IArsenal;
+import collections.interfaces.IArsenal;
 import domain.interfaces.IWeapon;
-import domain.types.Yardstick;
+import types.Yardstick;
 
 public class Arsenal implements IArsenal {
     private BinaryTree<IWeapon> root;

@@ -1,11 +1,10 @@
-package domain.collections;
+package collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import collections.Arsenal;
 import domain.entity.Weapon;
-import domain.types.Yardstick;
+import types.Yardstick;
 
 import static org.junit.jupiter.api.Assertions.*;
 
