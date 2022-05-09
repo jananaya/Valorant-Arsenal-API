@@ -61,6 +61,6 @@ public class Weapon implements IWeapon {
 	@Override
 	public String toString() {
 		return "Weapon{" + "name=" + name + ", category=" + category + ", specs=" + specs + ", imagePath=" + imagePath
-				+ '}';
+				+ ", rateOfFire=" + rateOfFire + ", damage=" + damage + ", rating=" + rating + '}';
 	}
 }
