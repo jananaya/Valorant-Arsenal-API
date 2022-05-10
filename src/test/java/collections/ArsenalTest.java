@@ -43,15 +43,15 @@ public class ArsenalTest {
 	@org.junit.jupiter.api.Test
 	void sort() {
 		ArrayList<String> specs = new ArrayList<>();
-		Weapon w1 = new Weapon("Desert Eagle", "Handgun", specs, "", 3, 1, 9);
+		Weapon w1 = new Weapon("Desert Eagle", "Handgun", (ArrayList<String>) specs.clone(), "", 3, 1, 9);
 
 		specs.add("This is a spec!");
 
-		Weapon w2 = new Weapon("AK47", "Fusil", specs, "", 9, 5, 15);
+		Weapon w2 = new Weapon("AK47", "Fusil", (ArrayList<String>) specs.clone(), "", 9, 5, 15);
 
 		specs.add("This is another spec!");
 
-		Weapon w3 = new Weapon("Knife", "Melee", specs, "", 2, 4, 20);
+		Weapon w3 = new Weapon("Knife", "Melee", (ArrayList<String>) specs.clone(), "", 2, 4, 20);
 
 		Arsenal arsenal = new Arsenal();
 		ArrayList<Weapon> weaponsByName = new ArrayList<>(Arrays.asList(w2, w1, w3));
