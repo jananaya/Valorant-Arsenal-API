@@ -16,7 +16,7 @@ public class Database {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/valorant_arsenal",
+                    "jdbc:mysql://root:iDp7GNAt7lVGbDkBk5JB@containers-us-west-36.railway.app:7560/railway",
                     "root",
                     ""
             );
