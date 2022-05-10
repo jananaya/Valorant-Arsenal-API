@@ -26,7 +26,7 @@ public enum Yardstick implements Comparator<IWeapon> {
     DAMAGE {
         @Override
         public int compare(IWeapon w1, IWeapon w2) {
-            return Float.compare(w1.getDamage(), w2.getDamage());
+            return w1.getDamage() - w2.getDamage();
         }
     },
     RATE_OF_FIRE {

@@ -8,6 +8,6 @@ public interface IWeapon {
     ArrayList<String> getSpecs();
     String getImagePath();
     float getRateOfFire();
-    float getDamage();
+    int getDamage();
     float getRating();
 }

@@ -9,11 +9,11 @@ public class Weapon implements IWeapon {
 	private final ArrayList<String> specs;
 	private final String imagePath;
 	private final float rateOfFire;
-	private final float damage;
+	private final int damage;
 	private final float rating;
 
 	public Weapon(String name, String category, ArrayList<String> specs, String imagePath, float rateOfFire,
-			float damage, float rating) {
+			int damage, float rating) {
 		this.category = category;
 		this.name = name;
 		this.specs = specs;
@@ -49,7 +49,7 @@ public class Weapon implements IWeapon {
 	}
 
 	@Override
-	public float getDamage() {
+	public int getDamage() {
 		return damage;
 	}
 

@@ -78,7 +78,7 @@ class WeaponTest {
     @org.junit.jupiter.api.Test
     void testToString() {
         Weapon rifle = new Weapon("My rifle", "Rifle", this.specs(), "path", 0, 0, 0);
-        String strRifle = "Weapon{name=My rifle, category=Rifle, specs=[The weapon's category is \"Rifle\", This weapon has got many bullets], imagePath=path, rateOfFire=0.0, damage=0.0, rating=0.0}";
+        String strRifle = "Weapon{name=My rifle, category=Rifle, specs=[The weapon's category is \"Rifle\", This weapon has got many bullets], imagePath=path, rateOfFire=0.0, damage=0, rating=0.0}";
 
         assertEquals(strRifle, rifle.toString());
     }
