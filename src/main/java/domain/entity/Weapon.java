@@ -1,70 +1,14 @@
 package domain.entity;
 
-import domain.interfaces.IWeapon;
+import domain._abstract.AbstractWeapon;
 import java.util.ArrayList;
 
-public class Weapon implements IWeapon {
-	private int id;
-	private final String name;
-	private final String category;
-	private final ArrayList<String> specs;
-	private final String imagePath;
-	private final float rateOfFire;
-	private final int damage;
-	private final float rating;
+public class Weapon extends AbstractWeapon {
 
-	public Weapon(int id, String name, String category, ArrayList<String> specs, String imagePath, float rateOfFire,
-			int damage, float rating) {
-		this.id = id;
-		this.category = category;
-		this.name = name;
-		this.specs = specs;
-		this.imagePath = imagePath;
-		this.rateOfFire = rateOfFire;
-		this.damage = damage;
-		this.rating = rating;
-	}
-
-	@Override
-	public int getId() {
-		return id;
-	}
-
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public String getCategory() {
-		return category;
-	}
-
-	@Override
-	public ArrayList<String> getSpecs() {
-		return specs;
-	}
-
-	@Override
-	public String getImagePath() {
-		return imagePath;
-	}
-	
-	@Override
-	public float getRateOfFire() {
-		return rateOfFire;
-	}
-
-	@Override
-	public int getDamage() {
-		return damage;
-	}
-
-	@Override
-	public float getRating() {
-		return rating;
-	}
-
+        public Weapon(int id, String name, String category, ArrayList<String> specs, String imagePath, float rateOfFire, int damage, float rating) {
+            super(id, name, category, specs, imagePath, rateOfFire, damage, rating);
+        }
+    
 	@Override
 	public String toString() {
 		return "Weapon{" + "id=" + id + ", name=" + name + ", category=" + category + ", specs=" + specs + ", imagePath=" + imagePath
