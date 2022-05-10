@@ -1,9 +1,9 @@
 package schema;
 
 import collections.Arsenal;
+import collections.interfaces.IArsenal;
 import domain.entity.Weapon;
 import domain.interfaces.IWeapon;
-import domain.interfaces.IArsenal;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class Database {
             IArsenal arsenal = new Arsenal();
 
             Statement stmt = this.connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT name FROM weapons");
+            ResultSet rs = stmt.executeQuery("SELECT name FROM weapon");
 
             while (rs.next()) {
                 String name = rs.getString(1);
@@ -57,26 +57,30 @@ public class Database {
     public IWeapon readByName(String name) {
         try {
             Statement stmt = this.connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM weapons WHERE name=\'"+name+"\'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM weapon WHERE name=\'"+name+"\'");
 
             rs.next();
 
-            int categoryId = rs.getInt(2);
-            String imagePath = rs.getString(3);
+            int id = rs.getInt(1);
+            int categoryId = rs.getInt(3);
+            String imagePath = rs.getString(4);
+            float rateOfFire = rs.getFloat(5);
+            int damage = rs.getInt(6);
+            float rating = rs.getFloat(7);
 
             rs = stmt.executeQuery("SELECT categoryName from category WHERE id="+categoryId);
             rs.next();
 
             String category = rs.getString(1);
 
-            rs = stmt.executeQuery("SELECT characteristic from specs WHERE weaponName=\'"+name+"\'");
+            rs = stmt.executeQuery("SELECT spec from spec WHERE weaponId="+id);
 
             ArrayList<String> specs = new ArrayList<>();
 
             while (rs.next())
                 specs.add(rs.getString(1));
 
-            return new Weapon(name, category, specs, imagePath, 0, 0, 0);
+            return new Weapon(id, name, category, specs, imagePath, rateOfFire, damage, rating);
         } catch (SQLException e) {
             e.printStackTrace();
         }
