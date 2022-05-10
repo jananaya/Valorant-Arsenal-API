@@ -4,6 +4,7 @@ import domain.interfaces.IWeapon;
 import java.util.ArrayList;
 
 public class Weapon implements IWeapon {
+	private int id;
 	private final String name;
 	private final String category;
 	private final ArrayList<String> specs;
@@ -12,8 +13,9 @@ public class Weapon implements IWeapon {
 	private final int damage;
 	private final float rating;
 
-	public Weapon(String name, String category, ArrayList<String> specs, String imagePath, float rateOfFire,
+	public Weapon(int id, String name, String category, ArrayList<String> specs, String imagePath, float rateOfFire,
 			int damage, float rating) {
+		this.id = id;
 		this.category = category;
 		this.name = name;
 		this.specs = specs;
@@ -21,6 +23,11 @@ public class Weapon implements IWeapon {
 		this.rateOfFire = rateOfFire;
 		this.damage = damage;
 		this.rating = rating;
+	}
+
+	@Override
+	public int getId() {
+		return id;
 	}
 
 	@Override
@@ -60,7 +67,7 @@ public class Weapon implements IWeapon {
 
 	@Override
 	public String toString() {
-		return "Weapon{" + "name=" + name + ", category=" + category + ", specs=" + specs + ", imagePath=" + imagePath
+		return "Weapon{" + "id=" + id + ", name=" + name + ", category=" + category + ", specs=" + specs + ", imagePath=" + imagePath
 				+ ", rateOfFire=" + rateOfFire + ", damage=" + damage + ", rating=" + rating + '}';
 	}
 }
