@@ -1,9 +1,10 @@
 package domain.entity;
 
 import domain._abstract.AbstractWeapon;
+import domain.interfaces.IWeapon;
 import java.util.ArrayList;
 
-public class Weapon extends AbstractWeapon {
+public class Weapon extends AbstractWeapon implements IWeapon {
 
         public Weapon(int id, String name, String category, ArrayList<String> specs, String imagePath, float rateOfFire, int damage, float rating) {
             super(id, name, category, specs, imagePath, rateOfFire, damage, rating);
