@@ -9,108 +9,108 @@ import types.Yardstick;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArsenalTest {
-	@org.junit.jupiter.api.Test
-	void insert() {
-		Arsenal arsenal = new Arsenal();
-		Weapon w1 = new Weapon("Desert Eagle", "Handgun", null, "", 0, 0, 0);
-		Weapon w2 = new Weapon("AK47", "Fusil", null, "", 0, 0, 0);
-		Weapon w3 = new Weapon("Knife", "Melee", null, "", 0, 0, 0);
+    @org.junit.jupiter.api.Test
+    void insert() {
+        Arsenal arsenal = new Arsenal();
+        Weapon w1 = new Weapon("Desert Eagle", "Handgun", null, "", 0, 0, 0);
+        Weapon w2 = new Weapon("AK47", "Fusil", null, "", 0, 0, 0);
+        Weapon w3 = new Weapon("Knife", "Melee", null, "", 0, 0, 0);
 
-		arsenal.insert(w2);
-		arsenal.insert(w3);
-		
-		assertEquals(null, arsenal.searchByName("Desert Eagle"));
-		
-		arsenal.insert(w1);
-		
-		assertEquals(w1, arsenal.searchByName("Desert Eagle"));
-		assertEquals(w2, arsenal.searchByName("AK47"));
-		assertEquals(w3, arsenal.searchByName("Knife"));
-	}
+        arsenal.insert(w2);
+        arsenal.insert(w3);
 
-	@org.junit.jupiter.api.Test
-	void searchByName() {
-		String weaponName = "AK47";
-		Weapon ak47 = new Weapon(weaponName, "", null, "", 0, 0, 0);
-		Arsenal arsenal = new Arsenal();
+        assertEquals(null, arsenal.searchByName("Desert Eagle"));
 
-		arsenal.insert(new Weapon("", null, null, null, 0, 0, 0));
-		arsenal.insert(ak47);
+        arsenal.insert(w1);
 
-		assertEquals(ak47, arsenal.searchByName(weaponName));
-	}
+        assertEquals(w1, arsenal.searchByName("Desert Eagle"));
+        assertEquals(w2, arsenal.searchByName("AK47"));
+        assertEquals(w3, arsenal.searchByName("Knife"));
+    }
 
-	@org.junit.jupiter.api.Test
-	void sort() {
-		ArrayList<String> specs = new ArrayList<>();
-		Weapon w1 = new Weapon("Desert Eagle", "Handgun", (ArrayList<String>) specs.clone(), "", 3, 1, 9);
+    @org.junit.jupiter.api.Test
+    void searchByName() {
+        String weaponName = "AK47";
+        Weapon ak47 = new Weapon(weaponName, "", null, "", 0, 0, 0);
+        Arsenal arsenal = new Arsenal();
 
-		specs.add("This is a spec!");
+        arsenal.insert(new Weapon("", null, null, null, 0, 0, 0));
+        arsenal.insert(ak47);
 
-		Weapon w2 = new Weapon("AK47", "Fusil", (ArrayList<String>) specs.clone(), "", 9, 5, 15);
+        assertEquals(ak47, arsenal.searchByName(weaponName));
+    }
 
-		specs.add("This is another spec!");
+    @org.junit.jupiter.api.Test
+    void sort() {
+        ArrayList<String> specs = new ArrayList<>();
+        Weapon w1 = new Weapon("Desert Eagle", "Handgun", (ArrayList<String>) specs.clone(), "", 3, 1, 9);
 
-		Weapon w3 = new Weapon("Knife", "Melee", (ArrayList<String>) specs.clone(), "", 2, 4, 20);
+        specs.add("This is a spec!");
 
-		Arsenal arsenal = new Arsenal();
-		ArrayList<Weapon> weaponsByName = new ArrayList<>(Arrays.asList(w2, w1, w3));
-		ArrayList<Weapon> weaponsByCategory = new ArrayList<>(Arrays.asList(w2, w1, w3));
-		ArrayList<Weapon> weaponsByNumberOfSpecs = new ArrayList<>(Arrays.asList(w3, w2, w1));
-		ArrayList<Weapon> weaponsByRateOfFire = new ArrayList<>(Arrays.asList(w3, w1, w2));
-		ArrayList<Weapon> weaponsByDamage = new ArrayList<>(Arrays.asList(w1, w3, w2));
-		ArrayList<Weapon> weaponsByRating = new ArrayList<>(Arrays.asList(w1, w2, w3));
+        Weapon w2 = new Weapon("AK47", "Fusil", (ArrayList<String>) specs.clone(), "", 9, 5, 15);
 
-		arsenal.insert(w1);
-		arsenal.insert(w2);
-		arsenal.insert(w3);
+        specs.add("This is another spec!");
 
-		assertEquals(weaponsByName, arsenal.sort(Yardstick.NAME));
-		assertEquals(weaponsByCategory, arsenal.sort(Yardstick.CATEGORY));
-		assertEquals(weaponsByNumberOfSpecs, arsenal.sort(Yardstick.NUMBER_OF_SPECS));
-		assertEquals(weaponsByRateOfFire, arsenal.sort(Yardstick.RATE_OF_FIRE));
-		assertEquals(weaponsByDamage, arsenal.sort(Yardstick.DAMAGE));
-		assertEquals(weaponsByRating, arsenal.sort(Yardstick.RATING));
-	}
+        Weapon w3 = new Weapon("Knife", "Melee", (ArrayList<String>) specs.clone(), "", 2, 4, 20);
 
-	@org.junit.jupiter.api.Test
-	void searchByCategory() {
-		Arsenal arsenal = new Arsenal();
+        Arsenal arsenal = new Arsenal();
+        ArrayList<Weapon> weaponsByName = new ArrayList<>(Arrays.asList(w2, w1, w3));
+        ArrayList<Weapon> weaponsByCategory = new ArrayList<>(Arrays.asList(w2, w1, w3));
+        ArrayList<Weapon> weaponsByNumberOfSpecs = new ArrayList<>(Arrays.asList(w3, w2, w1));
+        ArrayList<Weapon> weaponsByRateOfFire = new ArrayList<>(Arrays.asList(w3, w1, w2));
+        ArrayList<Weapon> weaponsByDamage = new ArrayList<>(Arrays.asList(w1, w3, w2));
+        ArrayList<Weapon> weaponsByRating = new ArrayList<>(Arrays.asList(w1, w2, w3));
 
-		Weapon w1 = new Weapon("Handgun weapon", "Handgun", null, "", 0, 0, 0);
-		Weapon w2 = new Weapon("Another handgun weapon", "Handgun", null, "", 0, 0, 0);
-		Weapon w3 = new Weapon("Knife", "Melee", null, "", 0, 0, 0);
+        arsenal.insert(w1);
+        arsenal.insert(w2);
+        arsenal.insert(w3);
 
-		ArrayList<Weapon> handguns = new ArrayList<>(Arrays.asList(w1, w2));
+        assertEquals(weaponsByName, arsenal.sort(Yardstick.NAME));
+        assertEquals(weaponsByCategory, arsenal.sort(Yardstick.CATEGORY));
+        assertEquals(weaponsByNumberOfSpecs, arsenal.sort(Yardstick.NUMBER_OF_SPECS));
+        assertEquals(weaponsByRateOfFire, arsenal.sort(Yardstick.RATE_OF_FIRE));
+        assertEquals(weaponsByDamage, arsenal.sort(Yardstick.DAMAGE));
+        assertEquals(weaponsByRating, arsenal.sort(Yardstick.RATING));
+    }
 
-		arsenal.insert(w1);
-		arsenal.insert(w2);
-		arsenal.insert(w3);
+    @org.junit.jupiter.api.Test
+    void searchByCategory() {
+        Arsenal arsenal = new Arsenal();
 
-		assertEquals(handguns, arsenal.searchByCategory("Handgun"));
-	}
+        Weapon w1 = new Weapon("Handgun weapon", "Handgun", null, "", 0, 0, 0);
+        Weapon w2 = new Weapon("Another handgun weapon", "Handgun", null, "", 0, 0, 0);
+        Weapon w3 = new Weapon("Knife", "Melee", null, "", 0, 0, 0);
 
-	@org.junit.jupiter.api.Test
-	void getWeapons() {
-		Arsenal arsenal = new Arsenal();
+        ArrayList<Weapon> handguns = new ArrayList<>(Arrays.asList(w1, w2));
 
-		Weapon w1 = new Weapon("Weapon", "", null, "", 0, 0, 0);
-		Weapon w2 = new Weapon("Another weapon", "", null, "", 0, 0, 0);
+        arsenal.insert(w1);
+        arsenal.insert(w2);
+        arsenal.insert(w3);
 
-		ArrayList<Weapon> weapons = new ArrayList<>(Arrays.asList(w2, w1));
+        assertEquals(handguns, arsenal.searchByCategory("Handgun"));
+    }
 
-		arsenal.insert(w1);
-		arsenal.insert(w2);
+    @org.junit.jupiter.api.Test
+    void getWeapons() {
+        Arsenal arsenal = new Arsenal();
 
-		assertEquals(weapons, arsenal.getWeapons());
-	}
+        Weapon w1 = new Weapon("Weapon", "", null, "", 0, 0, 0);
+        Weapon w2 = new Weapon("Another weapon", "", null, "", 0, 0, 0);
 
-	@org.junit.jupiter.api.Test
-	void empty() {
-		Arsenal arsenal = new Arsenal();
+        ArrayList<Weapon> weapons = new ArrayList<>(Arrays.asList(w2, w1));
 
-		assertTrue(arsenal.empty());
-		arsenal.insert(new Weapon("", "", null, "", 0, 0, 0));
-		assertFalse(arsenal.empty());
-	}
+        arsenal.insert(w1);
+        arsenal.insert(w2);
+
+        assertEquals(weapons, arsenal.getWeapons());
+    }
+
+    @org.junit.jupiter.api.Test
+    void empty() {
+        Arsenal arsenal = new Arsenal();
+
+        assertTrue(arsenal.empty());
+        arsenal.insert(new Weapon("", "", null, "", 0, 0, 0));
+        assertFalse(arsenal.empty());
+    }
 }
