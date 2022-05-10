@@ -34,10 +34,14 @@ public class Arsenal implements IArsenal {
             return;
         }
 
-        if (r.getData().getName().equals(name)) {
+        boolean isEqual = r.getData().getName().equals(name);
+        if (isEqual) {
             this.weapon = r.getData();
             return;
-        } else if (name.compareTo(r.getData().getName()) > 0) {
+        }
+
+        boolean isLater = name.compareTo(r.getData().getName()) > 0;
+        if (isLater) {
             if (r.right() == null) {
                 return;
             }
@@ -64,7 +68,8 @@ public class Arsenal implements IArsenal {
         if (r == null)
             return;
 
-        if (r.getData().getCategory().equals(category)) {
+        boolean isEqual = r.getData().getCategory().equals(category);
+        if (isEqual) {
             this.weapons.add(r.getData());
         }
 
@@ -117,7 +122,8 @@ public class Arsenal implements IArsenal {
     }
 
     private void insert(IWeapon weapon, BinaryTree<IWeapon> r) {
-        if (weapon.getName().compareTo(r.getData().getName()) > 0) {
+        boolean isLater = weapon.getName().compareTo(r.getData().getName()) > 0;
+        if (isLater) {
             if (r.right() == null) {
                 r.linkRight(new BinaryTree<IWeapon>(weapon));
                 return;
