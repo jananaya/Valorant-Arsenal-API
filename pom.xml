@@ -45,13 +45,6 @@
                 </exclusion>
             </exclusions> 
         </dependency>
-        <dependency>
-            <groupId>BinaryTree</groupId>
-            <artifactId>BinaryTree</artifactId>
-            <version>RELEASE</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/src/lib/BinaryTree.jar</systemPath>
-        </dependency>
     </dependencies>
 
     <build>
