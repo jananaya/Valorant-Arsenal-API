@@ -65,7 +65,6 @@ public class ArsenalTest {
         arsenal.insert(w2);
         arsenal.insert(w3);
 
-        assertEquals(weaponsByName, arsenal.sort(Yardstick.NAME));
         assertEquals(weaponsByCategory, arsenal.sort(Yardstick.CATEGORY));
         assertEquals(weaponsByNumberOfSpecs, arsenal.sort(Yardstick.NUMBER_OF_SPECS));
         assertEquals(weaponsByRateOfFire, arsenal.sort(Yardstick.RATE_OF_FIRE));

@@ -5,12 +5,6 @@ import java.util.Comparator;
 import domain.interfaces.IWeapon;
 
 public enum Yardstick implements Comparator<IWeapon> {
-    NAME {
-        @Override
-        public int compare(IWeapon w1, IWeapon w2) {
-            return w1.getName().compareTo(w2.getName());
-        }
-    },
     NUMBER_OF_SPECS {
         @Override
         public int compare(IWeapon w1, IWeapon w2) {

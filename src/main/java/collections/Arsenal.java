@@ -100,11 +100,7 @@ public class Arsenal implements IArsenal {
     @Override
     public ArrayList<IWeapon> sort(Yardstick yardstick) {
         this.weapons.clear();
-
-        if (yardstick == Yardstick.NAME) {
-            return this.getWeapons();
-        }
-
+        
         this.getWeapons(this.root);
         Collections.sort(this.weapons, yardstick);
 
