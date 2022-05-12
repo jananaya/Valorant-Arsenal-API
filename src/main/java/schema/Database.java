@@ -7,18 +7,23 @@ import domain.interfaces.IWeapon;
 
 import java.sql.*;
 import java.util.ArrayList;
+import org.aeonbits.owner.ConfigFactory;
 
 public class Database {
+    private DatabaseConfig config;
     private Connection connection;
     private static Database instance;
 
     private Database() {
+        
         try {
+            this.config = ConfigFactory.create(DatabaseConfig.class);
+            
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(
-                    "jdbc:mysql://root:iDp7GNAt7lVGbDkBk5JB@containers-us-west-36.railway.app:7560/railway",
-                    "root",
-                    ""
+                    config.url(),
+                    config.url(),
+                    config.password()
             );
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,6 +93,7 @@ public class Database {
         return null;
     }
 
+    @Override
     protected void finalize() throws Throwable {
         this.connection.close();
     }
