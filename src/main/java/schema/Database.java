@@ -25,10 +25,7 @@ public class Database {
                     config.url(),
                     config.password()
             );
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (SQLException | ClassNotFoundException e) {
         }
     }
 
@@ -87,7 +84,6 @@ public class Database {
 
             return new Weapon(id, name, category, specs, imagePath, rateOfFire, damage, rating);
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return null;
