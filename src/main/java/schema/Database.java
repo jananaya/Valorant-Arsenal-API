@@ -89,6 +89,23 @@ public class Database {
         return null;
     }
 
+    public ArrayList<String> getCategories() {
+        try {
+            Statement stmt = this.connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT categoryName FROM category");
+
+            ArrayList<String> categories = new ArrayList<>();
+
+            while(rs.next())
+                categories.add(rs.getString(1));
+
+            return categories;
+        } catch (SQLException e) {
+        }
+
+        return null;
+    }
+
     @Override
     protected void finalize() throws Throwable {
         this.connection.close();

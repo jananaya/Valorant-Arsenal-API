@@ -51,6 +51,11 @@ public class WeaponController {
                 this.model.getWeapons()
         );
     }
+
+    @GetMapping("/arsenal/category")
+    public ArrayList<String> sendCategories() {
+        return this.model.getCategories();
+    }
     
     @GetMapping("/arsenal/category/{category}")
     public ArrayList<WeaponDTO> sendWeaponsFromCategory(@PathVariable("category") String category) {
