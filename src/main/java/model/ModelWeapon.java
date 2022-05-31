@@ -9,8 +9,10 @@ import java.util.ArrayList;
 
 public class ModelWeapon {
     private final IArsenal arsenal;
+    private final IWeaponRepository repository;
 
     public ModelWeapon(IWeaponRepository repository) {
+        this.repository = repository;
         this.arsenal = repository.read();
     }
 
@@ -28,5 +30,9 @@ public class ModelWeapon {
 
     public ArrayList<IWeapon> searchByCategory(String category) {
         return this.arsenal.searchByCategory(category);
+    }
+
+    public ArrayList<String> getCategories() {
+        return this.repository.getCategories();
     }
 }
